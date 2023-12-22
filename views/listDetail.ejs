@@ -1,0 +1,34 @@
+<!-- views/listDetail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails de la Liste</title>
+</head>
+<body>
+  <h1>Détails de la Liste</h1>
+  <% if (list) { %>
+    <p><strong>Titre:</strong> <%= list.title %></p>
+    <p><strong>Date de fin de réservation:</strong> <%= list.reservationEndDate %></p>
+    <h2>Cadeaux dans la Liste</h2>
+    <ul>
+      <% for (const gift of list.gifts || []) { %>
+        <li><a href="/gifts/<%= gift.id %>"><%= gift.name %></a></li>
+      <% } %>
+    </ul>
+    <form action="/lists/<%= list.id %>/addGift" method="post">
+      <!-- Formulaire pour ajouter un cadeau à la liste -->
+      <!-- Remplissez les champs nécessaires ici -->
+      <button type="submit">Ajouter un Cadeau</button>
+    </form>
+  <% } else { %>
+    <p>Liste non trouvée</p>
+  <% } %>
+
+  <!-- Ajout du formulaire de création de liste -->
+  <form action="/lists/create" method="get">
+    <button type="submit">Créer une Liste</button>
+  </form>
+</body>
+</html>

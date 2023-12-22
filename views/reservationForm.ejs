@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>reservationForm</title>
+</head>
+<body>
+
+    <% if (gift.isReserved) { %>
+        <h2>Détails de la Réservation</h2>
+        <p><strong>Réservé par:</strong> <%= gift.reservedBy %></p>
+        <p><strong>Prix de réservation:</strong> <%= gift.reservationPrice %></p>
+        <p><strong>Date de réservation:</strong> <%= gift.reservationDate %></p>
+      <% } else { %>
+        <!-- Formulaire pour réserver le cadeau -->
+        <form action="<%= `/gifts/${gift.id}/reserve` %>" method="post">
+          <label for="person">Personne :</label>
+          <input type="text" id="person" name="person" required>
+    
+          <label for="price">Prix réel :</label>
+          <input type="number" id="price" name="price" required>
+    
+          <label for="reservationDate">Date de réservation :</label>
+          <input type="date" id="reservationDate" name="reservationDate" required>
+          
+    
+    
+          <button type="submit">Réserver</button>
+        </form>
+      <% } %>
+
+</body>
+</html>

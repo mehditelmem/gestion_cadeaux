@@ -1,0 +1,22 @@
+<!-- views/editList.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modifier une Liste</title>
+</head>
+<body>
+  <h1>Modifier une Liste</h1>
+  <form action="/lists/<%= list.id %>/edit" method="post">
+    <label for="title">Titre :</label>
+    <input type="text" id="title" name="title" value="<%= list.title %>" required>
+
+    <label for="reservationEndDate">Date de fin de réservation :</label>
+    <input type="date" id="reservationEndDate" name="reservationEndDate" value="<%= list.reservationEndDate.toISOString().split('T')[0] %>" required>
+
+    <button type="submit">Modifier la Liste</button>
+  </form>
+  <a href="/lists">Retour à la liste des listes</a>
+</body>
+</html>

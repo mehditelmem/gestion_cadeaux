@@ -1,0 +1,28 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Cadeaux</title>
+</head>
+<body>
+  <h1>Liste des Cadeaux</h1>
+
+  <!-- Formulaire de recherche et tri -->
+  <form action="/gifts" method="get">
+    <label for="keyword">Rechercher des cadeaux par nom :</label>
+    <input type="text" id="keyword" name="keyword" required>
+    <button type="submit">Rechercher</button>
+
+    <!-- Bouton pour trier par ordre alphabétique -->
+    
+  </form>
+  <button type="submit" name="sort" value="alphabetical">Trier par ordre alphabétique</button>
+  <ul>
+    <% for (const gift of gifts) { %>
+      <li><a href="/gifts/<%= gift.id %>"><%= gift.name %></a></li>
+    <% } %>
+  </ul>
+</body>
+</html>

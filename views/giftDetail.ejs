@@ -1,0 +1,69 @@
+<!-- views/giftDetail.ejs -->
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du Cadeau</title>
+</head>
+<body>
+  <h1>Détails du Cadeau</h1>
+  <p><strong>Nom:</strong> <%= gift.name %></p>
+  <p><strong>Résumé:</strong> <%= gift.summary %></p>
+  <p><strong>Prix:</strong> <%= gift.price %></p>
+  <p><strong>Auteur:</strong> <%= gift.author %></p>
+  <p><strong>Date de début de réservation:</strong> <%= gift.reservationStartDate %></p>
+  <p><strong>Date de fin de réservation:</strong> <%= gift.reservationEndDate %></p>
+  <form action="/gifts/<%= gift.id %>/reserve" method="post">
+
+    <button type="submit">Réserver</button>
+  </form>
+</body>
+</html>
+-->
+
+<!-- views/gift_detail.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Détails du Cadeau</title>
+</head>
+<body>
+  <h1>Détails du Cadeau</h1>
+  <p><strong>Nom:</strong> <%= gift.name %></p>
+  <p><strong>Résumé:</strong> <%= gift.summary %></p>
+  <p><strong>Prix:</strong> <%= gift.price %></p>
+  <p><strong>Auteur:</strong> <%= gift.author %></p>
+  <p><strong>Date de début de réservation:</strong> <%= gift.reservationStartDate %></p>
+  <p><strong>Date de fin de réservation:</strong> <%= gift.reservationEndDate %></p>
+  <% if (gift.image) { %>
+    <h2>Image du Cadeau</h2>
+    <img src="<%= gift.image %>" alt="<%= gift.name %>">
+  <% } %>
+  <% if (gift.isReserved) { %>
+    <h2>Détails de la Réservation</h2>
+    <p><strong>Réservé par:</strong> <%= gift.reservedBy %></p>
+    <p><strong>Prix de réservation:</strong> <%= gift.reservationPrice %></p>
+    <p><strong>Date de réservation:</strong> <%= gift.reservationDate %></p>
+  <% } else { %>
+    <!-- Formulaire pour réserver le cadeau -->
+    <form action="<%= `/gifts/${gift.id}/reserve` %>" method="post">
+      <label for="person">Personne :</label>
+      <input type="text" id="person" name="person" required>
+
+      <label for="price">Prix réel :</label>
+      <input type="number" id="price" name="price" required>
+
+      <label for="reservationDate">Date de réservation :</label>
+      <input type="date" id="reservationDate" name="reservationDate" required>
+      
+
+
+      <button type="submit">Réserver</button>
+    </form>
+  <% } %>
+</body>
+</html>

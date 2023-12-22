@@ -1,0 +1,24 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Listes</title>
+</head>
+<body>
+  <h1>Liste des Listes</h1>
+  <ul>
+    <% for (const list of lists) { %>
+      <li>
+        <a href="/lists/<%= list.id %>"><%= list.title %></a>
+        <!-- Ajoutez un lien "Supprimer" avec une requête POST pour supprimer la liste -->
+        <form action="/lists/<%= list.id %>/delete" method="post" style="display: inline;">
+          <button type="submit">Supprimer</button>
+        </form>
+      </li>
+    <% } %>
+    <a href="/lists/create">Créer une Liste</a>
+  </ul>
+</body>
+</html>

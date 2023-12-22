@@ -1,0 +1,41 @@
+<!-- views/addGiftForm.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ajouter un Cadeau à la Liste</title>
+</head>
+<body>
+  <h1>Ajouter un Cadeau à la Liste</h1>
+  <p>Liste: <%= list.title %></p>
+  <form action="/lists/<%= list.id %>/addGift" method="post">
+    <!-- Formulaire pour ajouter un cadeau à la liste -->
+    <label for="name">Nom du Cadeau:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="summary">Résumé:</label>
+    <textarea id="summary" name="summary" required></textarea>
+
+    <label for="price">Prix:</label>
+    <input type="number" id="price" name="price" required>
+
+    <label for="image">URL de l'Image:</label>
+    <input type="text" id="image" name="image" required>
+
+    <label for="author">Auteur:</label>
+    <input type="text" id="author" name="author" required>
+
+    <label for="reservationStartDate">Date de début de réservation:</label>
+    <input type="date" id="reservationStartDate" name="reservationStartDate" required>
+
+    <label for="reservationEndDate">Date de fin de réservation:</label>
+    <input type="date" id="reservationEndDate" name="reservationEndDate" required>
+
+    <!-- Ajoutez d'autres champs du cadeau ici selon vos besoins -->
+
+    <button type="submit">Ajouter un Cadeau</button>
+  </form>
+  <a href="/lists/<%= list.id %>">Retour à la Liste</a>
+</body>
+</html>

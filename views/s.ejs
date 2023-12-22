@@ -1,0 +1,26 @@
+<!-- views/giftList.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liste des Cadeaux</title>
+</head>
+<body>
+  <h1>Liste des Cadeaux</h1>
+  <!-- Formulaire de recherche -->
+  <form action="/gifts/search" method="get">
+    <label for="keyword">Rechercher des cadeaux par nom :</label>
+    <input type="text" id="keyword" name="keyword" required>
+    <button type="submit">Rechercher</button>
+  </form>
+
+  <!-- Afficher les résultats de la recherche ou la liste complète -->
+  <h2><%= req.query.keyword ? 'Résultats de la Recherche' : 'Tous les Cadeaux' %></h2>
+  <ul>
+    <% for (const gift of gifts) { %>
+      <li><a href="/gifts/<%= gift.id %>"><%= gift.name %></a></li>
+    <% } %>
+  </ul>
+</body>
+</html>
